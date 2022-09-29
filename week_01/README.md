@@ -1,10 +1,6 @@
-# H1 Yifu Hou**
+# Yifu Hou
 
-# H3 Data Selfie
-
-![Yifu](https://github.com/yifu-hou/CAPP30239_FA22/blob/main/week_01/Data_Selfie_Yifu.heic)ß
-
-# H3 Self Introduction
+![Yifu](Data_Selfie_Yifu.heic)
 
 Hi! This is my data selfie. 
 
