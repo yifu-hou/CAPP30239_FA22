@@ -1,6 +1,6 @@
 # Yifu Hou
 
-![Yifu](Data_Selfie_Yifu.heic)
+![Yifu](yifu_data_selfie.jpeg)
 
 Hi! This is my data selfie. 
 
