@@ -42,4 +42,4 @@ The method to process complaint details is yet to be decided.
 The current information, though abundant, lacks more dimensions to present more diverse information on the environment of Chicago city. Some supplement data might be needed to build a more informative data visualization product. 
 
 
-* This database is the primary source for my project *
+*** This database is the primary source for my project ***
