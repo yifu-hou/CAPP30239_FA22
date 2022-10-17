@@ -27,13 +27,13 @@ I would like to categorize the data to reduce complexity and discover informatio
 
 #### 4) Potential data points
 
-INDEX
-COMPLAINT_TYPE
-TIME_OF_THE_DAY 
-NEIGHBORHOOD
-COORDINATES
-YEAR
-COMPLAINT_DETAIL
+INDEX </p>
+COMPLAINT_TYPE </p>
+TIME_OF_THE_DAY  </p>
+NEIGHBORHOOD </p>
+COORDINATES </p>
+YEAR </p>
+COMPLAINT_DETAIL </p>
 
 #### 5) Concerns about the data
 
