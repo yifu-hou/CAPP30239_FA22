@@ -49,13 +49,13 @@ I would like to categorize the data to reduce complexity and discover informatio
 
 #### 4) Potential data points
 
-INDEX </p>
-COMPLAINT_TYPE </p>
-TIME_OF_THE_DAY  </p>
-NEIGHBORHOOD </p>
-COORDINATES </p>
-YEAR </p>
-COMPLAINT_DETAIL </p>
+**INDEX:** < int > index</p>
+**COMPLAINT_TYPE:** < char > types of complaint</p>
+**TIME_OF_THE_DAY:** < char > needs to be built based on time from original data source</p>
+**NEIGHBORHOOD:** < char > community area of Chicago</p>
+**COORDINATES:** < float > coordinates of the location where complaint was reported</p>
+**YEAR:** < int > year</p>
+**COMPLAINT_DETAIL:** < char > recorded complaint details, usually has a length < 100 </p>
 
 #### 5) Concerns about the data
 
