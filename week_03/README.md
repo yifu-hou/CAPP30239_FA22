@@ -1,13 +1,13 @@
 ## WEEK 3: Data Source
 
-Yifu Hou
-CAPP 30239
+Yifu Hou </p>
+CAPP 30239 </p>
 
 ### Data source
-Title: CDPH Environmental Complaints
-Agency: the Department of Environment (DOE) 
-Location: Chicago, IL
-Link: https://data.cityofchicago.org/Environment-Sustainable-Development/CDPH-Environmental-Complaints/fypr-ksnz
+Title: CDPH Environmental Complaints  </p>
+Agency: the Department of Environment (DOE)  </p>
+Location: Chicago, IL </p>
+Link: https://data.cityofchicago.org/Environment-Sustainable-Development/CDPH-Environmental-Complaints/fypr-ksnz </p>
 
 ### About the data
 
@@ -42,4 +42,4 @@ The method to process complaint details is yet to be decided.
 The current information, though abundant, lacks more dimensions to present more diverse information on the environment of Chicago city. Some supplement data might be needed to build a more informative data visualization product. 
 
 
-This database is the primary source for my project
+* This database is the primary source for my project *
