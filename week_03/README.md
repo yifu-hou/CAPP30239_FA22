@@ -7,13 +7,18 @@ CAPP 30239 </p>
 
 * **index.html:** Example HTML document from class.
 * **script.js:** Example js file for data visualization from class.
-* **covid.csv:** Example data from class (COVID cases in different countries).</p>
+* **covid.csv:** Example data from class (COVID cases in different countries).
+
+
 * **homework.html:** HTML file for homework.
 * **homework.js:** js file for homework (build data visualization on library vist data).
-* **lib.csv:** Library visit data for homework. See detailed description below.</p>
+* **lib.csv:** Library visit data for homework. See detailed description below.
+
+
 * **chicago_complaints.csv:** Imported data from Chicago Data Portal (for final project).
 
-* README.md: This file.
+
+* **README.md:** This file.
 
 
 ## Data Source: CDPH Environmental Complaints
