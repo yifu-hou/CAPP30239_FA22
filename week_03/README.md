@@ -7,12 +7,10 @@ CAPP 30239 </p>
 
 * **index.html:** Example HTML document from class.
 * **script.js:** Example js file for data visualization from class.
-* **covid.csv:** Example data from class (COVID cases in different countries).
-</p>
+* **covid.csv:** Example data from class (COVID cases in different countries).</p>
 * **homework.html:** HTML file for homework.
 * **homework.js:** js file for homework (build data visualization on library vist data).
-* **lib.csv:** Library visit data for homework. See detailed description below.
-</p>
+* **lib.csv:** Library visit data for homework. See detailed description below.</p>
 * **chicago_complaints.csv:** Imported data from Chicago Data Portal (for final project).
 
 * README.md: This file.
@@ -59,4 +57,4 @@ The method to process complaint details is yet to be decided.
 The current information, though abundant, lacks more dimensions to present more diverse information on the environment of Chicago city. Some supplement data might be needed to build a more informative data visualization product. 
 
 
-*** This database is the primary source for my project ***
+***This database is the primary source for my project***
