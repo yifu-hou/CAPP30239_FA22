@@ -30,7 +30,7 @@ d3.json('climate.json').then((data) => {
     function updateChart(m) {
         const bins = d3.bin()
             .thresholds(10)
-            .value(d => d.average)(data[m]);
+            .value(d => d.average)(data[m]);   // here we get the option from the drop-down manu
 
         binGroups.selectAll("g")
             .data(bins, d => d.x0)
@@ -59,12 +59,12 @@ d3.json('climate.json').then((data) => {
                 .duration(750)
                 .attr("y", d => y(d.length) - 5);
             },
-            update => {
+            update => {  //  function exit will drop the previous chart
             update.select("rect")
                 .transition()
                 .duration(750)
                 .attr("y", d => y(d.length))
-                .attr("height", d => height - margin.bottom - y(d.length));
+                .attr("height", d => height - margin.bottom - y(d.length));  // change theny position based on new data
 
             update.select("text")
                 .text(d => d.length)
@@ -72,7 +72,7 @@ d3.json('climate.json').then((data) => {
                 .duration(750)
                 .attr("y", d => y(d.length) - 5);
             },
-            exit => {
+            exit => {  // function exit will drop the previous chart
             exit.select("rect")
                 .transition()
                 .duration(750)
@@ -87,16 +87,17 @@ d3.json('climate.json').then((data) => {
                 .remove();
             }
         );
-
+        
+        // foreignObject: add notes on the chart
         svg.selectAll("foreignObject").remove();
 
-        let temp = d3.mean(data[m], d => d.average).toFixed(1);
+        let temp = d3.mean(data[m], d => d.average).toFixed(1);  // toFixed: round up the float number
         let str = `The average temperature in 
-                    <b style="text-transform:capitalize;">${m} 2020</b> was 
-                    <b>${temp}℉</b>.`
+                    <b style="text-transform:capitalize;">${m} 2020</b> was
+                    <b>${temp}℉</b>.` // captalize a word
 
-        svg.append("foreignObject")
-          .attr("x", 10)
+        svg.append("foreignObject")  // create foreignObject and manually position it (recommended)
+          .attr("x", 10)  // the position is relative to svg
           .attr("y", 100)
           .attr("width", 120)
           .attr("height", 100)
@@ -108,7 +109,7 @@ d3.json('climate.json').then((data) => {
     updateChart("january");
 
     d3.selectAll("select")
-        .on("change", function (event) {
+        .on("change", function (event) {   // when the drop-down manu changes, act 
             const m = event.target.value;
             updateChart(m); 
         });

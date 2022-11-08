@@ -4,6 +4,7 @@ d3.json('budget-all.json').then((data) => {
   }
 });
 
+// define function and call repetitively to create many ring charts
 function createRing({ year, values }) {
   const height = 250,
     width = 300,

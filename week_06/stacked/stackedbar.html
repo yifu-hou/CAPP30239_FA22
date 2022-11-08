@@ -17,6 +17,8 @@
   </div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- here the script is inside the html file -->
   <script>
 
     const width = 860,
@@ -30,7 +32,7 @@
     d3.csv("fruit.csv").then( data => {
     
       let x = d3.scaleBand(data.map(d => (d.group)),[margin.left, width - margin.right])
-        .padding([0.2]);
+        .padding([0.2]);  // defining the space between bars
 
       let y = d3.scaleLinear([0,45],[height - margin.bottom, margin.top]);
 
@@ -43,9 +45,9 @@
         .call(d3.axisLeft(y).tickSize(-width + margin.left + margin.right))
       
       //protein,carbs,fiber
-      const subgroups = data.columns.slice(1);
+      const subgroups = data.columns.slice(1);  // choose part of the data (starting with the second column)
 
-      const color = d3.scaleOrdinal(subgroups,['#e41a1c','#377eb8','#4daf4a']);
+      const color = d3.scaleOrdinal(subgroups,['#e41a1c','#377eb8','#4daf4a']);  // use scale to define colors
     
       const stackedData = d3.stack()
         .keys(subgroups)(data);
