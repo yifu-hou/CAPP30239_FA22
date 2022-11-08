@@ -1,12 +1,13 @@
 /* Horizontal bar chart for COVID country cases */
 
-d3.csv("covid.csv").then(data => {
+d3.csv("covid.csv").then(data => {   // .then : create flow 
 
     for (let d of data) {
         d.cases = +d.cases; //force a number
     };
 
-    data.sort((a, b) => b.cases - a.cases);
+    data.sort((a, b) => b.cases - a.cases);  // sort by number on the cases
+    // dara.sort((a, b) => d3.ascending(a.country - b.country))  // sort by alphabetical order of the country name
 
     const height = 600,
           width = 800,

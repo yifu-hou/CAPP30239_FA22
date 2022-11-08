@@ -1,14 +1,13 @@
-/* D3 Line Chart */
-// for performance: run const lines while loading data 
-const height = 500,
-    width = 800,
-    margin = ({ top: 15, right: 30, bottom: 35, left: 40 });
+
+// const height_l = 500,
+//     width_l = 800,
+//     margin_l = ({ top: 15, right: 30, bottom: 35, left: 40 });
     
 const svg = d3.select("#chart")
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
-d3.csv('long-term-interest-monthly.csv').then(data => {
+d3.csv('monthly.csv').then(data => {
 
     let timeParse = d3.timeParse("%Y-%m");  // parse the formate of date
     
@@ -29,7 +28,7 @@ d3.csv('long-term-interest-monthly.csv').then(data => {
     
     svg.append("g")
       .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y).tickSizeOuter(0).tickFormat(d => d + "%").tickSize(-width));
+      .call(d3.axisLeft(y).tickSizeOuter(0).tickFormat(d => d).tickSize(-width));
 
     svg.append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)  // locate the axis 
@@ -67,19 +66,3 @@ d3.csv('long-term-interest-monthly.csv').then(data => {
 
 
   });
-
-
-/*
-
-CLASS NOTES:
-
-command + d: select all for one element;
-d3.extent(): get min and max as a range;
-.tickSizeOuter(): define the size of the tick on the head of the axis;
-.tickFormat(): loop through the ticks on one axis and alter them in a new format;
-.tickSize(-width): create standard lines on the chart 
-                   (the style of this will be written by CSS in html file)
-
-Style dependent on data can be left in JS file
- 
-*/

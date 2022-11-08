@@ -37,7 +37,7 @@ d3.csv('long-term-interest-canada.csv').then(data => {
 
     svg.append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)  // locate the axis 
-      .call(d3.axisBottom(x).tickSizeOuter(0));
+      .call(d3.axisBottom(x).tickFormat(d3.timeForm(B)).tickSizeOuter(0));
 
     // set text style and add text
     svg.append("text")
