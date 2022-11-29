@@ -1,6 +1,7 @@
 const bar_height = 400,
       bar_width = 800,
-      bar_margin = ({ top: 25, right: 30, bottom: 35, left: 50 });
+      bar_margin = ({ top: 25, right: 30, bottom: 35, left: 50 }),
+      xAxis_position = bar_margin.top + (bar_height - bar_margin.bottom - bar_margin.top)* (3/13);
 
 const bar_svg = d3.select("#temp")
       .append("svg")
@@ -14,15 +15,16 @@ d3.csv("data/yearly_temp.csv").then(data => {
         .padding(0);
     
     let y = d3.scaleLinear()
-        .domain([-10, 10])
+        .domain([-10, 3])
         .range([bar_height - bar_margin.bottom, bar_margin.top]);
 
     bar_svg.append("g")
-        .attr("transform", `translate(20, 195)`) // (0,${(bar_height - bar_margin.bottom)/2})
+        .attr("transform", `translate(0, 
+            ${(xAxis_position)})`)
         .call(d3.axisBottom(x));
     
     bar_svg.append("g")
-        .attr("transform", `translate(70, 0)`) // (${bar_margin.left},0)
+        .attr("transform", `translate(${bar_margin.left}, 0)`) // (${bar_margin.left},0)
         .call(d3.axisLeft(y));
 
     let bar = bar_svg.selectAll(".bar") // create bar groups
@@ -32,13 +34,12 @@ d3.csv("data/yearly_temp.csv").then(data => {
         .attr("class", "bar");
 
     bar.append("rect") // add rect to bar group
-        .attr("fill", "red")
+        //.attr("fill", "maroon")
         .attr("x", d => x(d.month)) // x position attribute
-        .attr("width", x.bandwidth()) // this width is the width attr on the element
-        .attr("y", d => y(d.diff)) // y position attribute
-        // .attr("y", d => Math.min(x(0), x(x[d])))
-        .attr("height", d => y(d.diff)); // this height is the height attr on element
-        // .attr("height", d => Math.abs(x(x[d]) - x(0)))
+        .attr("width", x.bandwidth() - 10) // this width is the width attr on the element
+        .attr("y", d => y(Math.max(d.diff, 0))) // y position attribute
+        .attr("height", d => Math.abs(y(d.diff) - y(0)))
+        .attr("fill", d => d.diff > 0 ? "red" : "blue");
 
     // bar_svg
     //     .selectAll("rect")
@@ -53,5 +54,4 @@ d3.csv("data/yearly_temp.csv").then(data => {
 	// 	  .style("stroke", "black")
 	// 	  .style("stroke-width", "1px");
 
-    
 });
