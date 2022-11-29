@@ -11,7 +11,7 @@ const sc_svg = d3.select("#sun_scatter")   // select id = #chart and pin the d3
     .append("svg")
     .attr("viewBox", [0, 0, sc_width, sc_height]);
 
-d3.csv('data/solar21.csv').then(data => {
+d3.csv('data/solar_data.csv').then(data => {
     let x = d3.scaleLinear()
       .domain([0, 13]) // d3.max(data, d => d.month)
       .range([sc_margin.left, sc_width - sc_margin.right]);
@@ -20,10 +20,10 @@ d3.csv('data/solar21.csv').then(data => {
       .domain([8, 20]) //.nice()
       .range([sc_height - sc_margin.bottom, sc_margin.top]);
 
-    const dot_size = d => d.agg_solar_energy;
+    const dot_size = d => d.avg_solar_energy;
     
     let sizeScale = d3.scaleLinear()
-      .domain([0, d3.max(data, d => d.agg_solar_energy)]);
+      .domain([0, d3.max(data, d => d.avg_solar_energy)]);
 
     sc_svg.append("g")
       .attr("transform", `translate(0,${sc_height - sc_margin.bottom})`)
@@ -42,7 +42,7 @@ d3.csv('data/solar21.csv').then(data => {
       .join("circle")
       .attr("cx", d => x(d.month))
       .attr("cy", d => y(d.avg_daytime))
-      .attr("r", d => sizeScale(dot_size(d)) * 10)
+      .attr("r", d => sizeScale(dot_size(d)) * 15)
       .attr("opacity", 0.75);
 
     const tooltip = d3.select("body").append("div") 
@@ -52,10 +52,11 @@ d3.csv('data/solar21.csv').then(data => {
 
     d3.selectAll("circle")
       .on("mouseover", function(event, d) {
-        d3.select(this).attr("fill", "maroon");
+        d3.select(this).attr("fill", "red");
         tooltip
           .style("visibility", "visible")
-          .html(`Month: ${d.month}<br />Average Daytime: ${d.avg_daytime} hours<br />Total Solar Energy Received: ${d.agg_solar_energy}`);
+          .html(`Month: ${d.month}<br />Average Daytime: ${d.avg_daytime} hours<br />
+          Average Solar Energy Received: ${d.avg_solar_energy} MJ/sqm`);
       })
       .on("mousemove", function(event) {
         tooltip
