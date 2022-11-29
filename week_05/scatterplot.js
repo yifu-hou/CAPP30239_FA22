@@ -6,8 +6,7 @@ const svg = d3.select("#chart")   // select id = #chart and pin the d3
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
-d3.csv('penguins.csv').then(data => {
-  
+d3.csv('penguines.csv').then(data => {
   let x = d3.scaleLinear()
     .domain(d3.extent(data, d => d.body_mass_g)).nice()
     .range([margin.left, width - margin.right]);

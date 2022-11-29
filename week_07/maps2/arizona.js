@@ -7,6 +7,7 @@ const svg = d3.select("#chart")
 
 d3.json("libs/counties-albers-10m.json").then(us => {  
   us.objects.states.geometries = us.objects.states.geometries.filter(d => d.properties.name === "Arizona");
+  // overwrite the geometries with only the state of AZ
   
   const az = topojson.feature(us, us.objects.states); // Map simple geometries, used to create canvas
   const mesh = topojson.mesh(us, us.objects.states); // Shape of object, used to center and resize (projection)

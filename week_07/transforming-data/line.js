@@ -3,7 +3,8 @@ function line(data, id, xVal, yVal, minVal) {
   const height = 250,
     margin = ({ top: 15, right: 30, bottom: 20, left: 20 });
  
-  const width = d3.select(id)
+  // select the width of the console and set our width accordingly
+    const width = d3.select(id)
     .node()
     .getBoundingClientRect().width;
 

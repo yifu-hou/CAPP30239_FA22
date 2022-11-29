@@ -39,7 +39,7 @@ d3.csv("data/yearly_temp.csv").then(data => {
         .attr("width", x.bandwidth() - 10) // this width is the width attr on the element
         .attr("y", d => y(Math.max(d.diff, 0))) // y position attribute
         .attr("height", d => Math.abs(y(d.diff) - y(0)))
-        .attr("fill", d => d.diff > 0 ? "red" : "blue");
+        .attr("fill", d => d.diff > 0 ? "darkred" : "steelblue");
 
     // bar_svg
     //     .selectAll("rect")
