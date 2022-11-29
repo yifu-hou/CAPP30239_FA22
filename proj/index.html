@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicago Weather in Visuals</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Sketch: Chicago Weather in Visuals</h1>
+        <p>The historical weather data is collected from <a href="https://www.visualcrossing.com/">Visual Crossing Weather Records</a>.</p>
+        
+
+        <h3>Temperature: Feelslike VS. Actual</h3>
+        <div><p>Note: This is a bar chart showing the difference between the monthly average 
+            "Feelslike Temperature" and the real Temperature.</p>
+            <p>A line charts will be added to show the average monthly humidity (maybe overlap with this bar chart?).</p>
+            <p>The differece is more significant in winter.</p>
+        </div>
+        <div id="temp"></div>
+        <div id="humidity"></div>
+
+        <h3>Daytime and Solar Energy Received</h3>
+        <div><p>Note: This is a scatter plot showing the average daytime (hr) and the aggregated solar energy 
+            received in Chicago area.</p> 
+            <p>More information on monthly data will be shown by mousemove.</p>
+        </div>
+        <div id="sun_scatter"></div>
+
+        <h3>Wind Speed and Direction - (yearly average)</h3>
+    </div>
+    
+</body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="temp_bar.js"></script>
+<script src="sunlight.js"></script>
+</html>
