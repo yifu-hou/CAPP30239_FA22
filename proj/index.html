@@ -21,6 +21,14 @@
             margin: 0 auto;
         }
 
+        #chart_title {
+            position: relative;
+            padding: 0, 0;
+            font-size: 14px;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+
         #pt1 {
             position: relative;
             max-width: 1000px;
@@ -56,7 +64,7 @@
 
         #wind {
             max-width: 400px;
-            padding: 0px, 0;
+            padding: 0px, 30px;
         }
 
         .float-container {
@@ -90,7 +98,7 @@
 <body>
     <div id="container">
         <h1>Chicago Weather in Visuals: Why Is It So Awful Here?</h1>
-        <div>
+        <div class="widetext">
             <p>
                 Like many people coming to Chicago for the first time, I have been asking myself two questions: 
                 “what am I doing here?” and “why is the winter so awful?” 
@@ -117,7 +125,8 @@
         <div id="pt1">
             <h3>Feels colder? Because it does!</h3>
             <div id="temp"></div>
-            <div id="pt1_word">
+            <div id="chart_title">Difference between Feelslike Temperature and Air Temperature in Chicago - Monthly Average Since 2010</div>
+            <div class="widetext">
                 <p>
                     There are many unpleasant aspects of Chicago winter. The most obvious one is the cold. The winter 
                     weather hits hard to your face like an ambush. And a lot of the time it seems to be colder than what 
@@ -143,7 +152,7 @@
 
         <div id="pt2">
             <h3>It's kinda dingy here…</h3>
-            <div id="pt2_word">
+            <div class="widetext">
                 <p>
                     Cold weather along isn't t so depressing, if it's companied with abundant sunlight. Unfortunately, 
                     Chicago only offers nice sunlight during the summertime. The wet, gloomy weather continues from November 
@@ -165,12 +174,12 @@
                 </p>
             </div>
             <div id="sun_scatter"></div>
+            <div id="chart_title">Monthly Average Daytime and Solar Power Received in Chicago (Since 2010)</div>
         </div>
 
         <div class="float-container">
-
+            <h3>It's called Windy City for a reason.</h3>
             <div class="float-child">
-                <h3>It's called Windy City for a reason.</h3>
                 <div id="pt3_word">
                     <p>
                         Although the term Windy City was firstly referred to Chicago for political reasons, the city certainly 
@@ -179,7 +188,7 @@
                         wind, making it stronger in the city. 
                     </p>
                     <p>
-                        Chicago is windy in every season, and in 2021 the average windspeed is at around 15 miles per hour. In 
+                        Chicago is windy in every season, and in 2021 the average windspeed is at around 15 miles per hour (dash gray line). In 
                         the graph we can see some sharp spikes in winter months, where the windspeed exceeds 20 miles per hour 
                         on many days.  
                     </p>
@@ -189,6 +198,7 @@
             <div class="float-child">
                 <div id="pt3">
                     <div id="wind"></div>
+                    <div id="chart_title">2021 Chicago Windspeed</div>
                 </div>
             </div>
 
@@ -197,81 +207,113 @@
     </div>
     <div id="pt4">
         <h3>About the Project</h3>
-        <h5>Data:</h5>
-        <p>
-            I am interested in weather data because of a cool visualization I've seen in my project review homework. 
-            In Tokyo, Japan some people visualized the delay of foliage peak following the delay of large daily temperature 
-            difference in fall. I have never handled weather data before, and it seemed to be a great experience exploring 
-            something I'm not so familiar with. 
-        </p>
-        <p>As one of the largest cities in America, Chicago kept a decent historical weather data since 1871. The data before 
-            this was unfortunately destroyed by Great Chicago Fire. After that, many organizations have served as official 
-            weather observation locations for the Chicago office, including the two airports - O'Hare and Midway, Chicago Opera 
-            House, and the University of Chicago (from 1926 to 1942). The data for this project is collected from 
-            <a href="https://www.visualcrossing.com/">Visual Crossing Weather Records</a>. 
-            I chose Visual Crossing Weather Records because it is free and the data is already pretty clean. 
-            It still takes a lot of effort to process the data until it fits the visual project. 
-            The Python file pj_data.ipynb handles the data cleaning process. 
-        </p>
-        <p>The story follows different aspects of the weather data: temperature, sunlight and wind. I was inspired from the early 
-            part of this course on data humanism that data visualization can be intimate and personal. So this visualization is very 
-            much using objected data source to deliver my impressions of the Chicago weather. 
-        </p>
-        <p>There was no missing data because this project only includes weather data from the past 10 years, when there were enough 
-            technical support to record and store data. The data is open sourced with a limited quota of daily free download.
-        </p>
-        <h5>Visualizing Process:</h5>
-        <p>
-            I started the project with the visualization for sunlight and daytime. The chart is designed based on the structure 
-            of a regular scatter plot: with x axis aligning with time and y axis representing the length of daytime. The dot size 
-            is added as the third dimension - which corresponds to the average monthly solar energy received. The large-sized dots 
-            end up laying on a bell-shaped curve, almost similar to the track of the sun projected on earth. For simplicity, the 
-            chart does not disclose the exact values for average daytime and the average solar energy received of the month. Instead, 
-            a toolkit is implemented to present information.
-        </p>
-        <p>
-            The temperature is the second chart implemented for the project. It was initially designed to be a scatter plot showing 
-            two groups of temperature data: daily feelslike temperature and daily air temperature in the past ten years, where the 
-            distance between the two points of a day is highlighted if large differences is found for one day. The original design 
-            also includes an overlapped line chart for daily humidity. However, the challenge for this design is that even after 
-            sampling the dataset, it is still too huge to visualize. 
-        </p>
-        <p>
-            Alternatively, the monthly average air temperature and the monthly average feelslike temperature is calculated based on 
-            the weather data of the past 10 years. With which I calculated their difference. To my satisfaction they presented the 
-            same key information. The chart for humidity is removed because it's stabled all year round and not seem to correlate 
-            with the main chart, and I also want to avoid using two axes for one chart.
-        </p>
-        <p>
-            The main challenge for this chart is the placement of negative values for bar chart. Unlike regular bar charts where 
-            everything is appended naturally, bar charts with negative values really challenges one's understanding of how D3 works 
-            to put layers of elements on a chart. A lot of time was spent on calculating the right positions and sizes for rectangle 
-            objects.
-        </p>
-        <p>
-            The wind chart took more time than the other two combined. Radius line chart is aesthetically pleasing and is a great 
-            design for representing time series or a directional data. It can be viewed as a regular line chart, where x-axis is 
-            curved into a circle and y-axis is shown by the radius. This chart was originally designed to be a radius line chart 
-            showing the aggregated windspeed from 16 directions (N, NNE, NE, ENE, E, …), with an interactive function to display 
-            different lines for 12 months. However, it seems that the D3 lineRadius doesn't support categorical values for x-axis. 
-            So implemented the chart with data for windspeed in one year (2021) and used the continuous time data as x-axis.
-        </p>
-        <p>
-            This chart faced many challenges. Unlike other charts where D3 handles some heavy lifting for building axes and appending 
-            shapes, radius line chart really demands every element of the chart to be built from scratch. So, the first steps are 
-            creating circles and lines for the frame of the chart. Then, a d3.lineRadius element is appended to mark the daily 
-            windspeed throughout the year of 2021. I used the same function for yearly average line. This process was very 
-            time-consuming and there was a lot of changing idea. I also implemented a radius bar chart and tried to build the rose 
-            wind map based on the code for pie chart, but neither of those were selected in the project.
-        </p>
+        <h4>Data:</h4>
+        <div class="widetext">
+            <p>
+                I am interested in weather data because of a cool visualization I've seen in my project review homework. 
+                In Tokyo, Japan some people visualized the delay of foliage peak following the delay of large daily temperature 
+                difference in fall. I have never handled weather data before, and it seemed to be a great experience exploring 
+                something I'm not so familiar with. 
+            </p>
+            <p>As one of the largest cities in America, Chicago kept a decent historical weather data since 1871. The data before 
+                this was unfortunately destroyed by Great Chicago Fire. After that, many organizations have served as official 
+                weather observation locations for the Chicago office, including the two airports - O'Hare and Midway, Chicago Opera 
+                House, and the University of Chicago (from 1926 to 1942). The data for this project is collected from 
+                <a href="https://www.visualcrossing.com/">Visual Crossing Weather Records</a>. 
+                I chose Visual Crossing Weather Records because it is free and the data is already pretty clean. 
+                It still takes a lot of effort to process the data until it fits the visual project. 
+                The Python file pj_data.ipynb handles the data cleaning process. 
+            </p>
+            <p>The story follows different aspects of the weather data: temperature, sunlight and wind. I was inspired from the early 
+                part of this course on data humanism that data visualization can be intimate and personal. So this visualization is very 
+                much using objected data source to deliver my impressions of the Chicago weather. 
+            </p>
+            <p>There was no missing data because this project only includes weather data from the past 10 years, when there were enough 
+                technical support to record and store data. The data is open sourced with a limited quota of daily free download.
+            </p>
+        </div>
+        <h4>Visualizing Process:</h4>
+        <div class="widetext">
+            <h5>Scatter Plot - Daytime and Solar Energy</h5>
+            <p>
+                I started the project with the visualization for sunlight and daytime (the second graph). The chart is designed based on the structure 
+                of a regular scatter plot: with x axis aligning with time and y axis representing the length of daytime. The dot size 
+                is added as the third dimension - which corresponds to the average monthly solar energy received. The large-sized dots 
+                end up laying on a bell-shaped curve, almost similar to the track of the sun projected on earth. For simplicity, the 
+                chart does not disclose the exact values for average daytime and the average solar energy received of the month. Instead, 
+                a toolkit is implemented to present information.
+            </p>
+            <p>
+                Color choices: 
+            </p>
+            <p>
+                For this chart I used orange as the dot color. It suits the theme of solar energy and is more prominant against a white 
+                background that yellor (which I was planning to use originally). When the mouse is on the dot, the circle turns red to 
+                highlight the month. I lightened the lines in the background to make the chart cleaner.
+            </p>
+            <h5>Bar Chart - Temperature</h5>
+            <p>
+                The temperature is the second chart implemented for the project. It was initially designed to be a scatter plot showing 
+                two groups of temperature data: daily feelslike temperature and daily air temperature in the past ten years, where the 
+                distance between the two points of a day is highlighted if large differences is found for one day. The original design 
+                also includes an overlapped line chart for daily humidity. However, the challenge for this design is that even after 
+                sampling the dataset, it is still too huge to visualize. 
+            </p>
+            <p>
+                Alternatively, the monthly average air temperature and the monthly average feelslike temperature is calculated based on 
+                the weather data of the past 10 years. With which I calculated their difference. To my satisfaction they presented the 
+                same key information. The chart for humidity is removed because it's stabled all year round and not seem to correlate 
+                with the main chart, and I also want to avoid using two axes for one chart.
+            </p>
+            <p>
+                The main challenge for this chart is the placement of negative values for bar chart. Unlike regular bar charts where 
+                everything is appended naturally, bar charts with negative values really challenges one's understanding of how D3 works 
+                to put layers of elements on a chart. A lot of time was spent on calculating the right positions and sizes for rectangle 
+                objects.
+            </p>
+            <p>
+                Color choices: 
+            </p>
+            <p>
+                For this chart I used light blue and orange to represent two situations: when feelslike temperature is lower / higher 
+                than air temperature. It's easy to distinguish and categorize the data groups, and it aligns with the intuition that cool 
+                color corresponds to cold weather while warm color corresponds to hot weather.
+            </p>
+            <h5></h5>
+            <p>
+                The wind chart took more time than the other two combined. Radius line chart is aesthetically pleasing and is a great 
+                design for representing time series or a directional data. It can be viewed as a regular line chart, where x-axis is 
+                curved into a circle and y-axis is shown by the radius. This chart was originally designed to be a radius line chart 
+                showing the aggregated windspeed from 16 directions (N, NNE, NE, ENE, E, …), with an interactive function to display 
+                different lines for 12 months. However, it seems that the D3 lineRadius doesn't support categorical values for x-axis. 
+                So implemented the chart with data for windspeed in one year (2021) and used the continuous time data as x-axis.
+            </p>
+            <p>
+                This chart faced many challenges. Unlike other charts where D3 handles some heavy lifting for building axes and appending 
+                shapes, radius line chart really demands every element of the chart to be built from scratch. So, the first steps are 
+                creating circles and lines for the frame of the chart. Then, a d3.lineRadius element is appended to mark the daily 
+                windspeed throughout the year of 2021. I used the same function for yearly average line. This process was very 
+                time-consuming and there was a lot of changing idea. I also implemented a radius bar chart and tried to build the rose 
+                wind map based on the code for pie chart, but neither of those were selected in the project.
+            </p>
+            <p>
+                Color choices: 
+            </p>
+            <p>
+                For this chart, I chose blue to coorespond with other charts and avoid too much color on the page. The cool tone
+                 also fits the idea that wind in Chicago gives a chilly feeling. To distinguish, I used a dark gray to represnet 
+                 average windspeed.
+            </p>
+        </div>
     </div>
     <div id="footer">
         <h3>References</h3>
-        <p><a href="https://en.wikipedia.org/wiki/Climate_of_Chicago"></a>Wikipedia - Climate of Chicago</p>
-        <p><a href="https://www.chicagotribune.com/news/ct-xpm-2014-06-19-chi-study-says-illinois-is-second-flattest-state-on-mainland-20140619-story.html">Study Says Illinois Is Second Flattest State On Mainland</a></p>
-        <p><a href="https://www.wunderground.com/maps/temperature/feels-like"></a>Weather Underground - Feelslike temperature</p>
-        <p><a href="https://blockclubchicago.org/2022/05/03/chicago-had-1-day-of-sunshine-in-the-past-42-days/"></a>Chicago Had 1 Day Of Sunshine In The Past 43 Days</p>
-        <p><a href="https://www.healthline.com/nutrition/depression-and-vitamin-d"></a>Is a Vitamin D Deficiency Causing Your Depression?</p>
+        <p>Climate of Chicago - Wikipedia</p>
+        <p><a href="https://www.chicagotribune.com/news/ct-xpm-2014-06-19-chi-study-says-illinois-is-second-flattest-state-on-mainland-20140619-story.html">
+            Study Says Illinois Is Second Flattest State On Mainland - Chicago Tribune</a></p>
+        <p>Feelslike temperature - Weather Underground</p>
+        <p>Chicago Had 1 Day Of Sunshine In The Past 43 Days - Block Club Chicago</p>
+        <p>Is a Vitamin D Deficiency Causing Your Depression? - Healthline</p>
 
     </div>
     
